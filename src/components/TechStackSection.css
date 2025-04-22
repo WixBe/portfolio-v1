@@ -1,0 +1,145 @@
+/* src/components/TechStackSection.css */
+.tech-stack-section {
+    min-height: 80vh; /* Adjust height as needed */
+    padding: 6rem 5%; /* Vertical and horizontal padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    background-color: inherit; /* Inherit theme background */
+    color: inherit; /* Inherit theme text color */
+    overflow: hidden; /* Prevent section itself from causing unwanted scrollbars */
+  }
+  
+  .tech-stack-section.visible {
+    opacity: 1;
+  }
+  
+  .tech-stack-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem; /* Space after title */
+    text-align: center;
+    color: inherit;
+  }
+  
+  .tech-grid-container {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+    justify-content: center; /* Center items horizontally */
+    gap: 3rem 2.5rem; /* Vertical and horizontal gap between items */
+    width: 100%;
+    max-width: 900px; /* Optional: Limit the max width of the grid */
+    padding: 1rem 0; /* Add some padding if needed */
+  }
+  
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100px; /* Control item width */
+    height: 100px; /* Control item height */
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: transparent; /* Invisible background */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Optional: Subtle hover effect */
+  .tech-item:hover {
+    transform: scale(1.1);
+    /* Add a very subtle background on hover if desired */
+    /* background-color: rgba(128, 128, 128, 0.05); */
+  }
+  
+  /* Style for the icon itself (color is applied inline) */
+  .tech-item svg {
+    /* You can add common styles here if needed, like drop shadow */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  
+  /* Optional: Style for tech name if displayed */
+  .tech-name {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: inherit; /* Use theme text color */
+    opacity: 0.8; /* Slightly dimmer */
+  }
+  
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 768px) {
+    .tech-stack-title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+  
+    .tech-grid-container {
+      gap: 2.5rem 2rem;
+      max-width: 100%; /* Allow full width */
+    }
+  
+    .tech-item {
+      width: 80px;
+      height: 80px;
+      padding: 0.8rem;
+    }
+    /* Adjust icon size for smaller items if needed */
+    .tech-item svg {
+        transform: scale(0.9);
+    }
+  }
+  
+  @media (max-width: 480px) {
+     .tech-grid-container {
+      gap: 2rem 1.5rem;
+    }
+     .tech-item {
+      width: 70px;
+      height: 70px;
+      padding: 0.6rem;
+    }
+     .tech-item svg {
+        transform: scale(0.8);
+    }
+     .tech-name {
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* --- Alternative: Horizontal Scroll --- */
+  /* If you prefer horizontal scrolling instead of wrapping:
+     1. Uncomment the styles below.
+     2. Comment out `flex-wrap: wrap;` and `justify-content: center;` above.
+     3. Adjust padding/width as needed.
+  */
+  /*
+  .tech-grid-container {
+    display: flex;
+    flex-wrap: nowrap; // Force single line
+    overflow-x: auto; // Enable horizontal scroll
+    justify-content: flex-start; // Align items to the start
+    padding: 1rem 5%; // Add horizontal padding inside scroll area
+    width: auto; // Allow container to exceed parent width
+    max-width: none; // Remove max-width constraint
+  
+    // Scroll snapping (optional, similar to projects)
+    // scroll-snap-type: x mandatory;
+    // scroll-padding: 0 5%;
+  
+    // Hide scrollbar visually
+    &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .tech-item {
+    // Ensure items don't shrink
+    flex-shrink: 0;
+    // Add scroll snap alignment if using snapping
+    // scroll-snap-align: start; // Or center
+  }
+  */
+  

@@ -1,0 +1,102 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.dark-mode {
+  background-color: #000000;
+  color: white;
+}
+
+body.light-mode {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+body.dark-mode .name-heading {
+  color: white;
+}
+body.light-mode .name-heading {
+  color: #222222;
+}
+
+.name-heading {
+   transition: color 0.5s ease;
+}
+
+/* --- Flicker Animation --- */
+/* @keyframes flicker {
+  0%, 100% { opacity: 1; background-color: #ffffff; } 
+  20%, 60% { opacity: 0.7; background-color: #f0f0f0; } 
+  40%, 80% { opacity: 1; background-color: #ffffff; } 
+  50% { opacity: 0.65; background-color: #e0e0e0; } 
+} */
+
+/* Apply flicker animation when the class is present */
+body.flickering {
+  animation: flicker 0.3s linear; /* Adjust duration/timing as needed */
+  /* Ensure light mode styles apply during flicker */
+  background-color: #ffffff;
+  color: #222222;
+}
+body.flickering .name-heading {
+    color: #222222;
+}
+body.flickering .theme-toggle-button {
+    color: #555;
+}
+
+
+/* --- Root Element --- */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;   
+}
+
+/* --- App Container (from App.css - keep this if you only want the name centered) --- */
+/* You might move these styles from App.css to index.css if App is always full screen */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Make container grow to fill #root */
+  width: 100%;
+}
+
+/* Keep responsive styles for name-heading if needed */
+@media (max-width: 768px) {
+  .name-heading {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .name-heading {
+    font-size: 2.5rem;
+  }
+}

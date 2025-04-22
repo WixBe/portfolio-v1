@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+.name-heading {
+  font-family: Archivo Black, sans-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+/* --- Landing Section --- */
+.landing-section {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide overflow to prevent scrollbars initially */
+  position: relative; /* Needed for potential absolute positioning inside */
+  background-color: inherit; /* Inherit background from body */
+}
+
+/* --- Name Heading Styling & Animation --- */
+.name-heading {
+  font-size: 5rem;
+  font-weight: bold;
+  color: inherit; /* Inherit color from body theme */
+  margin: 0;
+  text-align: center;
+  /* --- Animation Properties --- */
+  transform-origin: center bottom; /* Rotate/bend from the bottom center */
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), /* Smoother ease-out */
+              opacity 0.6s ease-out;
+  will-change: transform, opacity; /* Hint browser for performance */
+}
+
+/* State when scrolled */
+.name-heading.bend-fade-out {
+  opacity: 0;
+  /* Adjust perspective, rotateX, and translateY for desired "bend" */
+  transform: perspective(400px) rotateX(65deg) translateY(-40%);
+}
+
+@media screen and (max-width: 768px) {
+  .name-heading {
+    font-size: 3.5rem;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .name-heading {
+    font-size: 2.5rem;
+  }
+  
+}

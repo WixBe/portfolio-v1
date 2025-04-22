@@ -1,0 +1,337 @@
+.projects-section {
+    min-height: 100vh; 
+    padding: 6rem 0; /* Vertical padding, horizontal handled internally */
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    background-color: inherit;
+    color: inherit;
+    overflow: hidden; 
+    position: relative; /* For potential absolute positioning inside if needed */
+  }
+  
+  .projects-section.visible {
+    opacity: 1;
+  }
+  
+  .projects-title {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem; 
+    text-align: left;
+    width: 100%;
+    padding-left: 5%; /* Align title with content padding */
+    box-sizing: border-box;
+    color: inherit;
+  }
+  
+  /* Wrapper to contain the horizontally scrolling element */
+  .projects-scroll-wrapper {
+      width: 100%;
+      overflow: hidden; /* Hide potential vertical overflow from container */
+      margin-bottom: 1.5rem; /* Space before pagination dots */
+  }
+  
+  .projects-grid-container {
+    display: flex; 
+    flex-wrap: nowrap; /* Ensure items stay in a single line */
+    overflow-x: auto; 
+    gap: 2rem; 
+  
+    /* Add padding inside the scroll container, adjust as needed */
+    padding: 1rem 5%;
+    /* Base padding for larger screens (adjust 320px if your default card width is different) */
+    padding-left: calc(50vw - (320px / 2));
+    padding-right: calc(50vw - (320px / 2));
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    scroll-padding-left: calc(50vw - (320px / 2));
+    scroll-padding-right: calc(50vw - (320px / 2));
+    gap: 2rem; /* Base gap */
+  
+  
+    /* Make container visually extend edge-to-edge if desired */
+    margin-left: -5%;
+    margin-right: -5%;
+    width: calc(100% + 10%);
+    box-sizing: border-box;
+  
+    /* --- Scroll Snapping --- */
+    scroll-snap-type: x mandatory; /* Snap horizontally, mandatory */
+    /* Adjust scroll padding to control where items snap. 5% matches container padding */
+    scroll-padding: 0 5%;
+  
+    /* --- Hide Scrollbar Visually --- */
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar */
+    }
+    /* Firefox */
+    scrollbar-width: none; /* Hide scrollbar */
+    -ms-overflow-style: none; /* Hide scrollbar */
+  
+    /* Smooth scrolling for programmatic scroll (dot clicks) */
+    scroll-behavior: smooth;
+  }
+  
+  .project-card {
+    flex: 0 0 auto; /* Prevent cards from shrinking/growing */
+    width: 320px; /* Define card width */
+    height: 380px; /* Define card height */
+    background-color: rgba(128, 128, 128, 0.08); /* Very subtle background */
+    border: 1px solid rgba(128, 128, 128, 0.1); /* Subtle border */
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */ /* Or space-between if content varies */
+    align-items: flex-start; /* Align content to start */
+    text-align: left;
+    scroll-snap-align: center; /* Snap items to the center of the container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: inherit;
+    overflow: hidden; /* Hide overflowing content within card */
+    position: relative; /* Ensure positioning context for button */
+  }
+  
+  .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .project-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: inherit;
+  }
+  
+  .project-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: inherit;
+    flex-grow: 1; /* Allow paragraph to take available space */
+    margin-bottom: 1rem; /* Space before potential links/buttons */
+  }
+  
+  /* --- Pagination Dots --- */
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 6px;
+      background-color: transparent;
+      /* Use a border color that contrasts in both modes */
+      border: 1px solid currentColor; /* currentColor should work, but let's add overrides */
+      opacity: 0.4;
+      transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease; /* Add border-color transition */
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dot.active {
+      background-color: currentColor; /* Fill with theme text color */
+      opacity: 1;
+      transform: scale(1.1);
+      border-color: currentColor; /* Ensure border matches fill */
+    }
+    
+    /* --- Explicit Theme Overrides for Dots (Optional but Safer) --- */
+    body.dark-mode .dot {
+       border-color: rgba(255, 255, 255, 0.5); /* Lighter border in dark mode */
+       opacity: 0.5;
+    }
+    body.dark-mode .dot.active {
+       background-color: white;
+       border-color: white;
+       opacity: 1;
+    }
+    
+    body.light-mode .dot {
+       border-color: rgba(0, 0, 0, 0.4); /* Darker border in light mode */
+       opacity: 0.5;
+    }
+    body.light-mode .dot.active {
+       background-color: #333;
+       border-color: #333;
+       opacity: 1;
+    }
+  
+    .project-card {
+      /* ... existing card styles ... */
+      flex: 0 0 auto;
+      width: 320px;
+      height: 380px;
+      /* ... */
+      scroll-snap-align: center;
+      /* Add transition for transform */
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), /* Smoother scale transition */
+                  box-shadow 0.3s ease,
+                  opacity 0.3s ease; /* Add opacity transition if needed */
+      /* Slightly dim inactive cards */
+      opacity: 0.7;
+    }
+    
+    /* Style for the active card */
+    .project-card.active-card {
+      transform: scale(1.05); /* Make it slightly larger */
+      transition: translate 0.3s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease; /* Smooth transition */
+      opacity: 1; /* Ensure active card is fully opaque */
+      /* Optional: Add a more prominent shadow or border */
+      /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
+    }
+    
+    .project-card:hover {
+        /* Keep hover effect, maybe slightly different from active */
+        transform: translateY(-6px) scale(1.02); /* Combine hover effects */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        opacity: 1; /* Ensure hovered card is fully opaque */
+    }
+    
+    /* Ensure active card's hover doesn't shrink it */
+    .project-card.active-card:hover {
+        transform: translateY(-6px) scale(1.05); /* Maintain active scale on hover */
+    }
+
+    .view-project-button {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        background-color: var(--button-bg-color);
+        color: var(--button-text-color);
+        border: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .view-project-button:hover {
+        background-color: gray; /* Darker shade for hover */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .view-project-button:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode {
+        --button-bg-color: white; /* Blue for dark mode */
+        --button-text-color: black;
+    }
+
+    body.light-mode {
+        --button-bg-color: black; /* Darker button for light mode */
+        --button-text-color: white;
+    }
+  
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 768px) {
+    .projects-title {
+      font-size: 2rem;
+      text-align: center; /* Center title */
+      padding-left: 0;
+    }
+  
+    .project-card {
+      width: 280px;
+      height: 340px;
+      padding: 1.5rem;
+    }
+  
+    .projects-grid-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 2rem; /* 32px */
+    
+      /* --- Adjust Padding for Centering --- */
+      /* Calculate left padding: (Viewport Width / 2) - (Card Width / 2) */
+      /* Use CSS variables or direct calculation. Let's use calc() */
+      /* Adjust 320px if your card width is different */
+      padding-left: calc(50vw - (320px / 2));
+      /* Right padding ensures last item can scroll fully to center */
+      padding-right: calc(50vw - (320px / 2));
+      /* Keep some vertical padding */
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    
+      box-sizing: border-box; /* Include padding in element's total width/height */
+    
+      scroll-snap-type: x mandatory;
+      /* --- Adjust Scroll Padding --- */
+      /* Make scroll padding match visual padding to ensure snapping aligns with the centered view */
+      scroll-padding-left: calc(50vw - (320px / 2));
+      scroll-padding-right: calc(50vw - (320px / 2));
+    
+      /* Hide Scrollbar Visually */
+      &::-webkit-scrollbar { display: none; }
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    
+      scroll-behavior: smooth;
+    }
+    
+    /* --- Adjust Responsive Centering --- */
+    @media (max-width: 768px) {
+        /* Adjust card width if needed */
+        .project-card {
+          width: 80vw; /* Adjust percentage as needed (e.g., 75vw, 85vw) */
+          height: auto; /* Let height adjust to content */
+          min-height: 300px; /* Optional: ensure a minimum height */
+          padding: 1.2rem; /* Adjust padding if needed */
+        }
+        .projects-grid-container {
+          gap: 1rem; /* Reduce gap */
+          /* Recalculate padding for the new viewport-relative width */
+          /* Padding = (Viewport Width / 2) - (Card Width / 2) */
+          padding-left: calc(50vw - (80vw / 2)); /* e.g., calc(50vw - 40vw) = 10vw */
+          padding-right: calc(50vw - (80vw / 2));
+          scroll-padding-left: calc(50vw - (80vw / 2));
+          scroll-padding-right: calc(50vw - (80vw / 2));
+      }
+      .dot {
+          width: 8px;
+          height: 8px;
+          margin: 0 4px;
+      }
+      /* Optional: Adjust active card scale if 1.05 is too large */
+      .project-card.active-card {
+          transform: scale(1.02);
+      }
+      .project-card.active-card:hover {
+           transform: translateY(-4px) scale(1.02);
+      }
+    }
+    
+    @media (max-width: 480px) {
+        .project-card {
+            width: 78vw; /* Using viewport width */
+            /* height: auto; */
+            /* min-height: 320px; */
+        }
+         .projects-grid-container {
+            gap: 1rem; /* 16px */
+            /* Recalculate padding for 78vw card width */
+            padding-left: calc(50vw - (78vw / 2));
+            padding-right: calc(50vw - (78vw / 2));
+            scroll-padding-left: calc(50vw - (78vw / 2));
+            scroll-padding-right: calc(50vw - (78vw / 2));
+        }
+    }
+  }
+  
+  /*

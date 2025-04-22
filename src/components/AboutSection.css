@@ -1,0 +1,118 @@
+/* src/components/AboutSection.css */
+.about-section {
+  min-height: 100vh; /* Take at least full viewport height */
+  padding: 6rem 10%; /* Add padding (adjust as needed) */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: space-between; /* Space between text and placeholder */
+  gap: 4rem; /* Gap between text and placeholder */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.8s ease-in; /* Fade-in transition */
+  background-color: inherit; /* Inherit background from body */
+  color: inherit; /* Inherit text color from body */
+}
+
+.about-section.visible {
+  opacity: 1; /* Become visible */
+}
+
+.about-content {
+  flex: 2; /* Allow text content to take more space */
+  max-width: 600px; /* Optional: constrain text width */
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: inherit; /* Ensure heading color matches theme */
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: inherit; /* Ensure paragraph color matches theme */
+}
+
+.image-placeholder {
+  flex: 1; /* Allow placeholder to take remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Example minimum height */
+}
+
+.placeholder-box {
+  width: 250px; /* Adjust size as needed */
+  height: 350px; /* Adjust size as needed */
+  border: 2px dashed #888; /* Dashed border for placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.pfp {
+    width: 25rem; /* Default size for medium screens */
+    height: 25rem;
+    border-radius: 2%;
+    object-fit: cover;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 3px dashed var(--pfp-border); /* Use CSS variable for border color */
+}
+
+body.dark-mode {
+    --pfp-border: white;
+}
+
+body.light-mode {
+    --pfp-border: black;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .about-section {
+    flex-direction: column; /* Stack elements vertically */
+    text-align: center; /* Center text */
+    padding: 4rem 5%;
+  }
+
+  .about-content {
+    max-width: 100%; /* Allow text to take full width */
+    order: 2; /* Put text below placeholder on small screens */
+    margin-top: 2rem;
+  }
+
+  .image-placeholder {
+    order: 1; /* Put placeholder above text */
+    min-height: 250px;
+  }
+  .placeholder-box {
+      width: 200px;
+      height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+    .about-content h2 {
+        font-size: 2rem;
+    }
+    .about-content p {
+        font-size: 1rem;
+    }
+    .pfp {
+        width: 120px; /* Smaller size for tablets */
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pfp {
+        width: 100px; /* Smallest size for mobile */
+        height: 100px;
+    }
+}

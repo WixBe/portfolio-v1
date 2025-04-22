@@ -1,0 +1,33 @@
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    cursor: pointer;
+    border: none;
+    padding: 8px;
+    color: white;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    opacity: 0.8;
+}
+
+.dark-mode .theme-toggle-button {
+    color: white;
+}
+
+.light-mode .theme-toggle-button {
+    color: #555;
+}
+
+.theme-toggle-button:focus {
+    outline: 2px solid skyblue;
+    outline-offset: 2px;
+}
+
+.theme-toggle-button:focus:not(:focus-visible) {
+    outline: none;
+}

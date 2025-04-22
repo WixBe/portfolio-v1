@@ -1,0 +1,123 @@
+/* src/components/ContactSection.css */
+.contact-section {
+    min-height: 80vh; /* Adjust height */
+    padding: 6rem 5% 3rem; /* Top, Horizontal, Bottom padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    background-color: inherit;
+    color: inherit;
+    overflow: hidden;
+  }
+  
+  .contact-section.visible {
+    opacity: 1;
+  }
+  
+  .contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: inherit;
+  }
+  
+  .contact-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 600px; /* Limit width of intro text */
+    margin-bottom: 3rem;
+    color: inherit;
+    opacity: 0.9; /* Slightly less prominent than title */
+  }
+  
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; /* Space between email and social links */
+    margin-bottom: 4rem;
+  }
+  
+  .contact-email {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.75rem; /* Space between icon and email text */
+    font-size: 1.1rem;
+    color: inherit; /* Use theme text color */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .contact-email .email-icon {
+    opacity: 0.8;
+  }
+  
+  .contact-email:hover {
+    text-decoration: none;
+    /* Subtle background on hover */
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+  /* Optional: Specific theme hover colors */
+  body.dark-mode .contact-email:hover { background-color: rgba(255, 255, 255, 0.1); }
+  body.light-mode .contact-email:hover { background-color: rgba(0, 0, 0, 0.05); }
+  
+  
+  .social-links {
+    display: flex;
+    gap: 2rem; /* Space between social icons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center;
+  }
+  
+  .social-icon-link {
+    color: inherit; /* Use theme text color */
+    opacity: 0.7; /* Make icons slightly less prominent */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Needed for transform */
+  }
+  
+  .social-icon-link:hover {
+    opacity: 1; /* Full opacity on hover */
+    transform: scale(1.15) translateY(-2px); /* Grow and lift slightly */
+  }
+  
+  .contact-footer {
+    margin-top: auto; /* Push footer to the bottom if space allows */
+    padding-top: 2rem; /* Space above footer */
+    font-size: 0.9rem;
+    opacity: 0.6;
+    color: inherit;
+  }
+  
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 768px) {
+    .contact-title {
+      font-size: 2rem;
+    }
+    .contact-intro {
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-methods {
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .social-links {
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+     .contact-email {
+       font-size: 1rem;
+     }
+     .social-links {
+      gap: 1.2rem;
+    }
+  }
+  
