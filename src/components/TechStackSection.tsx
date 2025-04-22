@@ -2,7 +2,7 @@ import React from 'react';
 import {
     FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaDocker
 } from 'react-icons/fa';
-import { SiTypescript, SiJavascript, SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiAngular } from 'react-icons/si';
+import { SiTypescript, SiJavascript, SiPostgresql, SiMongodb, SiAngular } from 'react-icons/si';
 import './TechStackSection.css'; 
 
 interface TechStackSectionProps {
